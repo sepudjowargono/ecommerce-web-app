@@ -1,4 +1,8 @@
-# 🛍️ Ecommerce Web Product Catalog Shopping Cart App
+# 🛍️ Ecommerce Web Product Catalog
+
+An e-commerce web application built with React and TypeScript that allows users to browse products, manage a shopping cart, place orders, and review their order history. I built this project to practise creating a complete front-end application with authentication, cloud data storage, state management, testing, continuous integration, and deployment.
+
+---
 
 ## 🌐 Live Demo
 
@@ -10,527 +14,134 @@ https://github.com/sepudjowargono/product-catalog-app
 
 ---
 
-## 📖 Overview
-
-This project is a React-based E-Commerce application built using Firebase Authentication, Cloud Firestore, Redux Toolkit, React Query, and TypeScript.
-
-Users can create accounts, log in securely, browse products, manage a shopping cart, place orders, and view previous order history.
-
-Products, users, and orders are stored in Firestore, allowing full Create, Read, Update, and Delete (CRUD) functionality throughout the application.
-
-The shopping cart is managed using Redux Toolkit and persisted using `sessionStorage` to maintain cart data during the browser session.
-
----
-
 ## ✨ Features
 
-### 🛒 Product Catalog
-
-- Displays a list of products from Firestore
-- Shows each product's:
-  - 🏷️ Title
-  - 💲 Price
-  - 📂 Category
-  - 📝 Description
-  - ⭐ Rating
-  - 🖼️ Image
-- Includes an **Add to Cart** button for each product
-
-#
-
-### 🔎 Dynamic Category Filter
-
-- Uses React Query to retrieve product data from Firestore
-- Categories are dynamically generated from the product collection
-- The dropdown is dynamically generated and is not hard coded
-- Users can filter products by category
-- Selecting a category updates the displayed products
-
-#
-
-### 🧺 Shopping Cart
-
-- Users can decrease product quantity from the cart, or remove products from the cart
-- If a product quantity reaches zero, the item is automatically removed from the cart
-- If the same product is added more than once, the quantity increases
-- Cart displays:
-  - 🏷️ Product title
-  - 🖼️ Product image
-  - 🔢 Quantity
-  - 💲 Price
-- Users can remove products from the cart
-
-#
-
-### 🔐 User Authentication
-
-- Register new accounts using Firebase Authentication
-- Login using email and password
-- Logout functionality
-- Authentication state persists across refreshes
-- Protected application routes for authenticated users
-
-#
-
-### 👤 User Profile Management
-
-Users can:
-
-- View profile information
-- Update username and address
-- Store profile information in Firestore
-- Delete their account and associated Firestore profile
-
-#
-
-### ⚙️ Product Management
-
-Products are stored in Firestore instead of the FakeStore API.
-
-Users can:
-
-- ➕ Create products
-- 👀 View products
-- ✏️ Update products
-- 🗑️ Delete products
-
-All changes are immediately reflected in Firestore.
-
-#
-
-### 📦 Order Management
-
-During checkout:
-
-- Orders are stored in Firestore
-- Order information includes:
-  - User ID
-  - Products purchased
-  - Quantities
-  - Total order price
-  - Date created
-
-#
-
-### 📜 Order History
-
-Users can:
-
-- View previous orders
-- View order IDs
-- View order creation dates
-- View total order prices
-- Expand orders to view purchased products
-
-### 📊 Cart Totals
-
-The cart automatically calculates and displays:
-
-- 🛍️ Total number of products
-- 💰 Total cart price
-
-#
-
-### ✅ Checkout
-
-- Checkout clears the cart from Redux state
-- Checkout also clears the cart from `sessionStorage`
-- A success message appears after checkout
-
-#
-
-### 🖼️ Image Fallback
-
-If a product image fails to load, the application displays a placeholder image to maintain a consistent user experience. This app includes image fallback handling so a placeholder image appears if the original product image is unavailable.
-
-#
-
-### 🎨 Styling
-
-- Modern beige and brown colour scheme
-- Responsive product grid
-- Sticky navigation bar
-- Styled product cards and shopping cart section
-- Hover effects for buttons and cards
+- Register, log in, and log out using Firebase Authentication
+- Browse products and dynamically filter them by category
+- Add products to a cart, adjust quantities, and remove products
+- Preserve cart contents during the browser session with sessionStorage
+- Create, view, update, and delete products stored in Cloud Firestore
+- View, update, and delete a user profile
+- Complete a simulated checkout and save the order to Firestore
+- View previous orders and expand them to see purchased products
+- Display a placeholder when a product image cannot be loaded
 
 ---
 
 ## 🛠️ Technologies Used
 
-- ⚛️ React
-- 📘 TypeScript
-- 🔥 Firebase Authentication
-- 🔥 Cloud Firestore
-- 🧰 Redux Toolkit
-- 🔄 React Redux
-- ⚡ TanStack React Query
-- 🧭 React Router DOM
-- 🎨 CSS
-- 💾 sessionStorage
+- **Frontend:** React, TypeScript, CSS
+- **Routing:** React Router DOM
+- **Authentication:** Firebase Authentication
+- **Database:** Cloud Firestore
+- **Client state:** Redux Toolkit and React Redux
+- **Server state:** TanStack React Query
+- **Browser storage:** sessionStorage
+- **Testing:** Jest and React Testing Library
+- **CI/CD:** GitHub Actions and Vercel
 
 ---
 
-## 🧪 Testing
-
-This project demonstrates Test-Driven Development (TDD) practices through the implementation of unit and integration tests using Jest and React Testing Library.
-
-### Unit Tests
-
-#### Login.test.tsx
-- Verifies login form rendering
-- Verifies user input handling
-- Verifies login button interaction
-
-#### Navbar.test.tsx
-- Verifies navbar rendering
-- Verifies navigation links display correctly
-- Verifies cart count is displayed
-
-### Integration Test
-
-#### CartIntegration.test.tsx
-- Simulates adding a product to the cart
-- Verifies Redux state updates correctly
-- Verifies cart UI updates after user interaction
-
-Run tests with:
-```bash
-npm test
-```
----
-
-## 🚀 Continuous Integration (CI)
-
-A GitHub Actions workflow was implemented using:
-
-```bash
-.github/workflows/main.yml
-```
-
-The workflow automatically:
-
-- Installs project dependencies
-- Runs all unit and integration tests
-- Builds the application
-- Validates code before deployment
-
-This workflow runs on pushes and pull requests to the `main` branch.
-
----
-
-## 🔥 Firebase Services Used
+## 🔥 Firebase Services and Collections
 
 ### Firebase Authentication
 
-Used for:
-
-- User Registration
-- User Login
-- User Logout
-- Authentication State Management
+Firebase Authentication handles user registration, login, logout, and authentication state.
 
 ### Cloud Firestore
 
-Used for storing:
+The application uses the following collections:
 
-- Users
-- Products
-- Orders
+- `users` — stores profile information such as username, email, and address
+- `products` — stores the products displayed in the catalog and managed through CRUD operations
+- `orders` — stores completed orders, including the user ID, purchased products, quantities, total price, and creation date
 
 ---
 
-## 📡 Firestore Collections Used
+## 🧠 State Management
 
-### `users`
+### TanStack React Query
 
-Stores registered user profile data, including username, email, and address.
+React Query manages Firestore product data by handling fetching, loading and error states, caching, refetching, and keeping the interface synchronized after product changes.
 
-### `products`
+### Redux Toolkit
 
-Stores product data used for the product catalog and product management CRUD operations.
+Redux Toolkit manages the shopping cart, including product information, quantities, and the actions used to add, remove, or clear items.
 
-### `orders`
+### sessionStorage
 
-Stores completed checkout orders, including user ID, purchased products, quantities, total price, and date created.
+The Redux cart is synchronized with sessionStorage so it remains available if the page is refreshed during the same browser session. Completing checkout clears the cart from both Redux and `sessionStorage`.
 
 ---
 
 ## 📁 Project Structure
 
-```txt
-src/
-  cart/
-    cartSlice.ts
-
-  components/
-    Logout.tsx
-    Navbar.tsx
-    ShoppingCart.tsx
-
-  pages/
-    Home.tsx
-    Login.tsx
-    OrderHistory.tsx
-    ProductManager.tsx
-    Profile.tsx
-    Register.tsx
-
-  redux/
-    store.ts
-
-  services/
-    orderService.ts
-    productService.ts
-    userService.ts
-
-  types/
-    Order.ts
-    Product.ts
-    UserProfile.ts
-
-  App.css
-  App.tsx
-  firebaseConfig.ts
-  main.tsx
 ```
-
-### 📂 Additional Project Structure
-
-```txt
-.github
-  workflows
-    main.yml
+.github/
+└── workflows/
+    └── main.yml
 
 src/
-  __tests__
-    Navbar.test.tsx
-    Login.test.tsx
-    CartIntegration.test.tsx
+├── __tests__/
+│   ├── CartIntegration.test.tsx
+│   ├── Login.test.tsx
+│   └── Navbar.test.tsx
+├── cart/
+│   └── cartSlice.ts
+├── components/
+│   ├── Logout.tsx
+│   ├── Navbar.tsx
+│   └── ShoppingCart.tsx
+├── pages/
+│   ├── Home.tsx
+│   ├── Login.tsx
+│   ├── OrderHistory.tsx
+│   ├── ProductManager.tsx
+│   ├── Profile.tsx
+│   └── Register.tsx
+├── redux/
+│   └── store.ts
+├── services/
+│   ├── orderService.ts
+│   ├── productService.ts
+│   └── userService.ts
+├── types/
+│   ├── Order.ts
+│   ├── Product.ts
+│   └── UserProfile.ts
+├── App.css
+├── App.tsx
+├── firebaseConfig.ts
+└── main.tsx
 ```
----
-
-## 📄 File Descriptions
-
-### ⚙️ `main.tsx`
-
-Wraps the application with:
-
-- Redux `Provider`
-- React Query `QueryClientProvider`
-
-This allows the entire app to access Redux state and React Query functionality.
-
-#
-
-### 🧠 `store.ts`
-
-Configures the Redux store and connects the cart reducer.
-
-It also exports:
-
-```ts
-RootState;
-AppDispatch;
-```
-
-These are used for TypeScript support with `useSelector` and `useDispatch`.
-
-#
-
-### 🛍️ `cartSlice.ts`
-
-Handles all cart-related Redux logic.
-
-Includes reducers for:
-
-- ➕ Adding products to the cart
-- ➖ Removing products from the cart
-- 🧹 Clearing the cart during checkout
-
-It also includes `sessionStorage` logic to save, load, and clear cart data.
-
-#
-
-### 🏠 `Home.tsx`
-
-Displays the main product catalog.
-
-#### Responsibilities:
-
-- Fetch all products
-- Generate categories dynamically from Firestore product data
-- Filter products by selected category
-- Display product information
-- Add products to the cart
-
-#
-
-### 🛒 `ShoppingCart.tsx`
-
-Displays the shopping cart.
-
-#### Responsibilities:
-
-- Read cart data from Redux
-- Display cart items
-- Remove products from the cart
-- Calculate total products
-- Calculate total price
-- Handle checkout
-
-#
-
-### 🧭 `Navbar.tsx`
-
-Displays the navigation bar.
-
-#### Responsibilities:
-
-- Show app title/logo
-- Provide navigation links
-- Display current cart item count
-
-#
-
-### 🔐 `Login.tsx`
-
-Handles user authentication using Firebase Authentication.
-
-#### Responsibilities:
-
-- User login
-- Authentication validation
-- Redirect authenticated users
-
-#
-
-### 📝 `Register.tsx`
-
-Allows new users to create accounts.
-
-#### Responsibilities:
-
-- User registration
-- Firebase Authentication account creation
-- Firestore user profile creation
-
-#
-
-### 👤 `Profile.tsx`
-
-Allows users to manage profile information.
-
-#### Responsibilities:
-
-- View user profile
-- Update profile information
-- Delete account
-
-#
-
-### ⚙️ `ProductManager.tsx`
-
-Handles Firestore product CRUD operations.
-
-#### Responsibilities:
-
-- Create products
-- Read products
-- Update products
-- Delete products
-
-#
-
-### 📦 `OrderHistory.tsx`
-
-Displays previous user orders.
-
-#### Responsibilities:
-
-- Retrieve user orders from Firestore
-- Display order IDs
-- Display order dates
-- Display order totals
-- Display purchased products
-
-#
-
-### 🔥 `firebaseConfig.ts`
-
-Configures Firebase Authentication and Firestore connections.
-
-#
-
-### 🎨 `App.css`
-
-Contains the styling for the full application.
-
-#### Includes:
-
-- Navbar styling
-- Login and Register page styling
-- Profile page styling
-- Product catalog layout
-- Product Manager page styling
-- Product cards
-- Shopping cart styling
-- Order History page styling
-- Responsive design
-- Button hover effects
-- Beige and brown colour theme
 
 ---
 
 ## 🚀 Installation and Setup
 
-### 1️⃣ Clone the Repository
+1. Clone the repository
 
-```bash
-git clone https://github.com/sepudjowargono/product-catalog-app.git
+`git clone https://github.com/sepudjowargono/product-catalog-app.git`
+
+2. Navigate to the project folder
+
+`cd product-catalog-app`
+
+3. Install dependencies
+
+`npm install`
+
+4. Configure Firebase
+
+Create a Firebase project, enable Email/Password Authentication and Cloud Firestore, and create the following collections:
+
+`users`
+`products`
+`orders`
+
+Add your Firebase configuration to `src/firebaseConfig.ts`:
+
 ```
-
-#
-
-### 2️⃣ Navigate Into the Project Folder
-
-```bash
-cd ecommerce-web-app
-```
-
-#
-
-### 3️⃣ Install Dependencies
-
-```bash
-npm install
-```
-
-#
-
-### 4️⃣ Firebase Configuration
-
-Create a Firebase project and enable:
-
-- Authentication
-- Cloud Firestore
-
-Create the following Firestore collections:
-
-```bash
-users
-products
-orders
-```
-
-Add your Firebase credentials to:
-
-```bash
-firebaseConfig.ts
-```
-
-Example:
-
-```bash
 const firebaseConfig = {
   apiKey: "...",
   authDomain: "...",
@@ -538,215 +149,107 @@ const firebaseConfig = {
 };
 ```
 
-#
+Do not commit private configuration or environment values to the repository.
 
-### 5️⃣ Start the Development Server
+5. Start the development server
 
-```bash
-npm run dev
-```
+`npm run dev`
 
-#
-
-### 6️⃣ Open the App in the Browser
-
-After running the development server, open the local host URL shown in your terminal.
-
-Example:
-
-```txt
-http://localhost:5173
-```
+Open the local URL displayed in the terminal, typically `http://localhost:5173`.
 
 ---
 
-## 📦 Required Dependencies
+## 📱 How to Use the Application
 
-If dependencies need to be installed manually, use:
-
-```bash
-npm install firebase react-router-dom @reduxjs/toolkit react-redux @tanstack/react-query
-```
-
-and 
-
-```bash
-npm install --save-dev jest jest-environment-jsdom @testing-library/react @testing-library/jest-dom @testing-library/user-event
-```
+1. Register for an account or log in with an existing account.
+2. Browse all products or use the category dropdown to filter the catalog.
+3. Add products to the cart. Adding the same product again increases its quantity.
+4. Use the cart controls to decrease quantities or remove products.
+5. Select **Checkout** to save the order and clear the cart.
+6. Open **Order History** to review previous purchases.
+7. Use the **Profile** page to view or update account information.
+8. Use **Product Manager** to create, edit, or delete Firestore products.
 
 ---
 
-## 📱 How to Use the App
+## 🧪 Testing
 
-### 👀 View Products
+The project includes unit and integration tests using Jest and React Testing Library.
 
-When the app loads, all products are displayed on the home page.
+### Unit Tests
 
-#
+- `Login.test.tsx` verifies form rendering, user input, and login interaction.
+- `Navbar.test.tsx` verifies the navigation bar, its links, and the cart count.
 
-### 🔎 Filter by Category
+## Integration Test
 
-Use the dropdown menu to select a category.
+- `CartIntegration.test.tsx` simulates adding a product to the cart and verifies that both Redux state and the displayed cart update correctly.
 
-The product list will update based on the selected category.
+Run the test suite with:
 
-#
-
-### ➕ Add to Cart
-
-Click the **Add to Cart** button on any product card.
-
-The item will be added to the shopping cart.
-
-If the item already exists in the cart, the quantity will increase.
-
-#
-
-### ➖ Remove from Cart
-
-Click the **Remove** button beside a cart item to decrease its quantity.
-
-If the quantity reaches zero, the item is automatically removed from the cart.
-
-#
-
-### ✅ Checkout
-
-Click the **Checkout** button to complete the simulated purchase.
-
-This clears:
-
-- Redux cart state
-- `sessionStorage`
-
-A success message will display after checkout.
-
-### 🔐 Register and Login
-
-Create a new account using the Register page.
-
-After successful registration, a user profile is automatically created in Firestore.
-
-#
-
-### 👤 Manage Profile
-
-Navigate to the Profile page to:
-
-- View profile information
-- Update username
-- Update address
-- Delete your account
-
-#
-
-### ⚙️ Manage Products
-
-Navigate to the Product Manager page to:
-
-- Create products
-- Edit products
-- Delete products
-
-All changes are stored in Firestore.
-
-#
-
-### 📦 View Order History
-
-Navigate to the Order History page to:
-
-- View previous orders
-- View order totals
-- View order dates
-- View purchased products
+`npm test`
 
 ---
 
-## 🧠 State Management
+## 🚀 Continuous Integration and Deployment
 
-### ⚡ React Query
+The GitHub Actions workflow in `.github/workflows/main.yml` runs on pushes and pull requests to the main branch. It installs dependencies, runs the test suite, and builds the application to help identify problems before deployment.
 
-React Query is used for API/server data, including:
-
-- Products
-- Product Management
-- Firestore Data Refreshing
-
-React Query handles:
-
-- Fetching
-- Loading states
-- Error states
-- Caching
-- Refetching
-
-#
-
-### 🧰 Redux Toolkit
-
-Redux Toolkit is used for shopping cart state.
-
-The cart state includes:
-
-- Product information
-- Quantity of each item
-- Add/remove/clear cart actions
-
-#
-
-### 💾 sessionStorage
-
-The cart is saved in `sessionStorage`.
-
-This allows the cart to remain available during the browser session, even if the page is refreshed.
+The live application is deployed with Vercel.
 
 ---
 
 ## ⚠️ Error Handling
 
-The app includes error handling for:
+The application handles errors involving:
 
-- Firebase Authentication errors
-- Firestore product operations
-- Firestore user operations
-- Firestore order operations
-- Failed image loading
-- `sessionStorage` loading and saving issues
+- Firebase Authentication
+- Firestore product, profile, and order operations
+- Loading and saving cart data in sessionStorage
+- Product images that fail to load
+- React Query loading and error states
 
 ---
 
-## 🖼️ Image Fallback Handling
+## 🧩 Challenges and What I Learned
 
-If a product image fails to load, the app replaces it with a placeholder image.
+### Migrating from an External API to Firestore
 
-Example:
+The product catalog originally relied on external product data. Moving the application to Firestore required me to restructure the data layer and create service functions for products, profiles, and orders. This helped me understand how to separate database logic from React components and work with persistent cloud data.
 
-```tsx
-onError={(e) => {
-  e.currentTarget.src = PLACEHOLDER_IMAGE;
-}}
-```
+### Managing Different Types of State
 
-This prevents broken images from appearing in the UI.
+The application uses React Query for Firestore data and Redux Toolkit for the shopping cart. Learning when to use each tool was an important part of the project: React Query manages asynchronous server data and caching, while Redux manages predictable client-side cart actions.
+
+### Persisting and Clearing the Cart Correctly
+
+Synchronizing Redux with sessionStorage required careful handling so cart data survived page refreshes but was removed after checkout. This improved my understanding of state initialization, browser storage, and keeping multiple sources of state consistent.
+
+### Connecting Authentication to User Data
+
+Firebase Authentication manages account access, while Firestore stores the related user profile. Connecting these services taught me how to use an authenticated user's ID to create, retrieve, update, and delete the correct profile information.
+
+### Testing Components That Use Application State
+
+Testing the login, navigation, and cart behaviour required the components to be rendered with the providers and state they depend on. This gave me experience writing both focused unit tests and an integration test that verifies a complete user interaction across the interface and Redux store.
+
+### Automating Tests and Builds
+
+Adding GitHub Actions showed me how continuous integration can automatically install dependencies, test the application, and verify that it builds successfully whenever code is pushed or included in a pull request.
 
 ---
 
 ## 🔮 Future Improvements
 
-Possible future updates could include:
-
-- 👥 User Roles (Admin vs Customer)
-- 🔍 Product Search
-- ❤️ Wishlist Functionality
-- 🖼️ Product Details Pages
-- 📧 Email Order Confirmations
-- 📱 Additional Mobile Optimization
-- 🔔 Toast Notifications
-- 💳 Payment Gateway Integration
+- Add separate administrator and customer roles
+- Add product search and individual product detail pages
+- Add wishlist functionality
+- Add email order confirmations and toast notifications
+- Improve mobile responsiveness and accessibility
+- Integrate a payment provider for real checkout functionality
 
 ---
 
-## 👨‍💻 Author
+## 👩‍💻 Author
 
 Stephana Pudjowargono
